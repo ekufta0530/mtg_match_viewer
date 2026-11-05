@@ -1,6 +1,6 @@
 # Arena Replay Viewer
 
-Local web app that replays MTG Arena games from 17Lands logs as a readable board: card images, turn/phase tracker, draw and land stats. See [spec.md](spec.md) for the original design.
+Local web app that replays MTG Arena games from 17Lands logs as a readable board: card images, turn/phase tracker, draw and land stats.
 
 ![Arena Replay Viewer screenshot](images/board_example.png)
 
@@ -42,7 +42,7 @@ For developers: `make test` runs the tests, `npm run typecheck` checks types.
 | `web/` | Vite + React + Tailwind 4 + Zustand. Pages: events → event detail (deck, games) → replay. |
 | `fixtures/` | Saved raw 17Lands logs used by the parser tests. |
 
-## Findings that differ from the spec
+## Implementation notes
 
 - **Token / endpoints.** `/data/history` needs no auth at all (just `Accept: application/json`). The game list is `GET /data/user_game_list/{token}` and events are `GET /user/data/{token}`; both want the *public share* token. The game list only holds the most recent 100 games.
 - **No ZoneTransfer annotations.** 17Lands strips them, so the parser infers every move (draw, cast, mill, die…) by diffing zone membership per stable card id (`ObjectIdChanged` annotations are aliased). Mills/extra draws are attributed to the spell or ability on the stack.
