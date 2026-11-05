@@ -1,0 +1,6 @@
+{
+  "name": "@mmv/server", "private": true, "type": "module",
+  "scripts": { "dev": "tsx watch --env-file=../.env src/index.ts", "start": "tsx --env-file=../.env src/index.ts" },
+  "dependencies": { "@mmv/shared": "*", "fastify": "^5.2.0", "@fastify/multipart": "^9.0.0" },
+  "devDependencies": { "tsx": "^4.19.0", "@types/node": "^22.0.0" }
+}
